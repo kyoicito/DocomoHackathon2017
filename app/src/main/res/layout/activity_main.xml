@@ -1,23 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:weightSum="1">
 
-    <Button
-        android:id="@+id/camera_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="camera button" />
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:scaleType="fitCenter"
-        android:layout_width="300dp"
-        android:layout_height="300dp" />
+    <FrameLayout
 
-</LinearLayout>
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/background"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.42"
+            android:weightSum="1">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="0.84" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:scaleType="centerInside"
+                android:layout_weight="0.13">
+
+                <ImageButton
+                    android:background="@null"
+
+                    android:layout_width="161dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/button_mikke"
+                    android:id="@+id/imageButton"
+                    android:elevation="0dp"
+                    android:backgroundTint="@null"
+                    android:scaleType="centerCrop" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.27" />
+
+                <ImageButton
+                    android:background="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/button_zukan"
+                    android:id="@+id/imageButton"
+                    android:layout_weight="0.33"
+                    android:elevation="0dp"
+                    android:backgroundTint="@null"
+                    android:scaleType="centerCrop" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="93dp"
+                android:weightSum="1">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.84" />
+
+                <ImageButton
+                    android:background="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/button_question"
+                    android:id="@+id/imageButton"
+                    android:layout_weight="0.22"
+                    android:elevation="0dp"
+                    android:backgroundTint="@null"
+                    android:scaleType="centerCrop" />
+
+                <ImageButton
+                    android:background="@null"
+                    android:layout_width="108dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/button_ranking"
+                    android:id="@+id/imageButton"
+                    android:elevation="0dp"
+                    android:backgroundTint="@null"
+                    android:scaleType="centerCrop" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+
+</ImageView>
