@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private final static int RESULT_CAMERA = 1001;
     private final static int REQUEST_PERMISSION = 1002;
 
+    private Uri curImgUri;
     private ImageView imageView;
     private Uri cameraUri;
     private File  cameraFile;
@@ -53,18 +54,18 @@ public class MainActivity extends AppCompatActivity {
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Android 6, API 23以上でパーミッシンの確認
+                // Android 6, API 23以上でパーミッションの確認
                 if (Build.VERSION.SDK_INT >= 23) {
                     checkPermission();
                 }
                 else {
                     cameraIntent();
                     //画像を送信する部分を書く
-                    sendImage();
                 }
             }
         });
     }
+
 
     protected void onSaveInstanceState(Bundle outState){
         outState.putParcelable("CaptureUri", cameraUri);
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         );
         cameraFolder.mkdirs();
 
-        // 保存ファイル名
+        // 保存ファイル名決定
         String fileName = new SimpleDateFormat("ddHHmmss").format(new Date());
         filePath = cameraFolder.getPath() +"/" + fileName + ".jpg";
         Log.d("debug","filePath:"+filePath);
@@ -86,18 +87,21 @@ public class MainActivity extends AppCompatActivity {
         cameraFile = new File(filePath);
 //        cameraUri = Uri.fromFile(cameraFile);
         cameraUri = FileProvider.getUriForFile(MainActivity.this, getApplicationContext().getPackageName() + ".provider", cameraFile);
-
+        //カメラアクティビティ起動
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraUri);
+        curImgUri = cameraUri;
         startActivityForResult(intent, RESULT_CAMERA);
+
     }
 
+    //戻ってきた時
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == RESULT_CAMERA) {
 
             if(cameraUri != null){
-                imageView.setImageURI(cameraUri);
+                sendImage(curImgUri.toString());
             }
             else{
                 Log.d("debug","cameraUri == null");
@@ -105,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
     // Runtime Permission check
     private void checkPermission(){
@@ -135,11 +140,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //POSTするファイルのパスを引数として貰っている
-    protected String sendImage(String... ImagePath) {
+    protected void sendImage(String ImagePath) {
         //ポスト先のURL
-        String url = "153.127.200.187:8080/api/getref";
+        String url = "http://153.127.200.187:8080/api/getref/";
 
-        File file = new File(ImagePath[0]);
+        File file = new File(ImagePath);
 
         //ここでPOSTする内容を設定 "image/jpg"の部分は送りたいファイルの形式に合わせて変更する
         RequestBody requestBody = new MultipartBody.Builder()
@@ -164,7 +169,8 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (Exception e) {}
         Log.d("Response:", result);
-        return result;
+        //return result;
+        return;
     }
 
     // 結果の受け取り
