@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Thingpedia</string>
+    <string name="cam_button">CAMERA BUTTON</string>
 </resources>

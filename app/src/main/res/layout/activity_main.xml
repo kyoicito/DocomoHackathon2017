@@ -23,7 +23,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.42"
             android:weightSum="1">
 
             <Space
@@ -44,7 +43,7 @@
                     android:layout_width="161dp"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/button_mikke"
-                    android:id="@+id/imageButton"
+                    android:id="@+id/findButton"
                     android:elevation="0dp"
                     android:backgroundTint="@null"
                     android:scaleType="centerCrop" />
@@ -59,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/button_zukan"
-                    android:id="@+id/imageButton"
+                    android:id="@+id/pediaButton"
                     android:layout_weight="0.33"
                     android:elevation="0dp"
                     android:backgroundTint="@null"
@@ -82,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/button_question"
-                    android:id="@+id/imageButton"
+                    android:id="@+id/questionButton"
                     android:layout_weight="0.22"
                     android:elevation="0dp"
                     android:backgroundTint="@null"
@@ -93,13 +92,11 @@
                     android:layout_width="108dp"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/button_ranking"
-                    android:id="@+id/imageButton"
+                    android:id="@+id/rankingButton"
                     android:elevation="0dp"
                     android:backgroundTint="@null"
                     android:scaleType="centerCrop" />
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
-
-
-</ImageView>
+</LinearLayout>
