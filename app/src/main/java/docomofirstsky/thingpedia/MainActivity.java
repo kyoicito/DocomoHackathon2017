@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     checkPermission();
                 }
                 else {
+                    new OkHttpTester().testget();
                     cameraIntent();
                     //画像を送信する部分を書く
                 }
