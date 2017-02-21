@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        OkHttpTester ok=new OkHttpTester();
+        ok.testpost();
+
         if (savedInstanceState != null){
             cameraUri = savedInstanceState.getParcelable("CaptureUri");
         }
@@ -59,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                     checkPermission();
                 }
                 else {
-                    new OkHttpTester().testget();
                     cameraIntent();
                     //画像を送信する部分を書く
                 }
