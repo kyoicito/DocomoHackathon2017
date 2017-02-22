@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final static int RESULT_CAMERA = 1001;
     private final static int REQUEST_PERMISSION = 1002;
+    public static final int USERID=100;
 
     private Uri curImgUri;
     private ImageView imageView;
