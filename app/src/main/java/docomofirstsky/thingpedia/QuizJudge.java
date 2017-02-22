@@ -20,7 +20,7 @@ public class QuizJudge extends Activity {
 
         // 正解だったかどうか受け取る
         Intent intent = getIntent();
-        String question = intent.getBooleanExtra("ISCORRECT", false);
+        Boolean isCorrect = intent.getBooleanExtra("ISCORRECT", false);
 
         //正解なら正解，不正解なら不正解と表示
 
