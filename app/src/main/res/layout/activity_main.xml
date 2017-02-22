@@ -25,44 +25,47 @@
             android:layout_height="match_parent"
             android:weightSum="1">
 
-            <Space
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="0.84" />
+                android:layout_height="236dp"
+                app:srcCompat="@drawable/title"
+                android:id="@+id/imageView2"
+                android:layout_weight="0.37" />
 
             <LinearLayout
+                android:gravity="center|center"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="124dp"
+                android:layout_height="wrap_content"
                 android:scaleType="centerInside"
-                android:layout_weight="0.13">
+                android:layout_weight="0.54"
+                android:weightSum="1">
 
                 <ImageButton
                     android:background="@null"
 
-                    android:layout_width="161dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/button_mikke"
+                    app:srcCompat="@drawable/top_button_mikke"
                     android:id="@+id/findButton"
                     android:elevation="0dp"
                     android:backgroundTint="@null"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="fitCenter"
+                    android:layout_weight="0.36" />
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.27" />
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent" />
 
                 <ImageButton
                     android:background="@null"
-                    android:layout_width="wrap_content"
+                    android:layout_width="135dp"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/button_zukan"
+                    app:srcCompat="@drawable/top_button_zukan"
                     android:id="@+id/pediaButton"
-                    android:layout_weight="0.33"
                     android:elevation="0dp"
                     android:backgroundTint="@null"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="fitCenter" />
             </LinearLayout>
 
             <LinearLayout
@@ -80,7 +83,7 @@
                     android:background="@null"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/button_question"
+                    app:srcCompat="@drawable/top_button_question"
                     android:id="@+id/questionButton"
                     android:layout_weight="0.22"
                     android:elevation="0dp"
@@ -91,7 +94,7 @@
                     android:background="@null"
                     android:layout_width="108dp"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/button_ranking"
+                    app:srcCompat="@drawable/top_button_ranking"
                     android:id="@+id/rankingButton"
                     android:elevation="0dp"
                     android:backgroundTint="@null"

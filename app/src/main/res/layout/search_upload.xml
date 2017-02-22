@@ -26,19 +26,10 @@
             android:layout_weight="0.42"
             android:weightSum="1">
 
-            <TextView
-                android:text="しらべる？"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/word_search"
-                android:textSize="50sp"
-                android:gravity="bottom|center"
-                android:layout_weight="0.40" />
-
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.31" />
+                android:layout_weight="0.40" />
 
             <LinearLayout
                 android:orientation="horizontal"

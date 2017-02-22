@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         outState.putParcelable("CaptureUri", cameraUri);
     }
 
+    private void
+
     private void cameraIntent(){
         // 保存先のフォルダーを作成
         File cameraFolder = new File(
