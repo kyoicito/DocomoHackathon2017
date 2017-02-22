@@ -3,6 +3,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -17,8 +18,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -104,7 +110,23 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RESULT_CAMERA) {
 
             if(cameraUri != null){
-                sendImage(curImgUri.toString());
+               /*DocomoAPIConnector dc=new DocomoAPIConnector();
+                dc.setOnCallBack(new DocomoAPIConnector.CallBackTask(){
+                    //
+                });
+                dc.execute();*/
+                String url="http://153.127.200.187:8080/api/getref";
+                String jsondata=null;
+                try {
+                    JSONObject jo = new JSONObject();
+                    jo.put("userId", Integer.toString(USERID));
+                    jo.put("name", "じゃがりこ");
+                    JSONArray ja=new JSONArray();
+                    ja.put(jo);
+                    jsondata=ja.toString();
+                }catch (JSONException e){}
+                Log.e("API","post start");
+                postapi(url,jsondata);
             }
             else{
                 Log.d("debug","cameraUri == null");
@@ -112,6 +134,49 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public boolean postapi(String url,String postdata) {
+        final RequestBody requestBody = RequestBody.create(
+                MediaType.parse("text/plain"), postdata);
+        new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... params) {
+                String result = null;
+                String serverip = params[0];
+                // リクエストオブジェクトを作って
+                Request request = new Request.Builder()
+                        .url(serverip)
+                        .post(requestBody)
+                        .build();
+
+                // クライアントオブジェクトを作って
+                OkHttpClient client = new OkHttpClient();
+
+                // リクエストして結果を受け取って
+                try {
+                    Response response = client.newCall(request).execute();
+                    result = response.body().string();
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                // 返す
+                if (result != null)
+                    return result;
+                return "response is null";
+            }
+
+            //非同期処理が終わったらUIスレッドが実行する処理
+            //引数はdoInBackgroundの戻り値
+            @Override
+            protected void onPostExecute(String result) {
+                Log.e("OKHTTPPTEST", result);
+            }
+
+        }.execute(url);
+        return true;
+    }
     // Runtime Permission check
     private void checkPermission(){
         // 既に許可している
