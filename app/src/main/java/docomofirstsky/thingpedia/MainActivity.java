@@ -110,9 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("debug","cameraUri == null");
             }
         }
-
     }
-
 
     // Runtime Permission check
     private void checkPermission(){

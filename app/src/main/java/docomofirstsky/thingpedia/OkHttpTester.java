@@ -19,7 +19,6 @@ public class OkHttpTester {
     private static String URL="http://www.yahoo.co.jp";
     private static String serverip="http://153.127.200.187:8080/api/hello";
 
-
     public boolean testget(){
         new AsyncTask<Void, Void, String>() {
             @Override
