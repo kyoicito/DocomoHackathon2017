@@ -1,6 +1,7 @@
 package docomofirstsky.thingpedia;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class QuizJudge extends Activity {
         String ans2 = intent.getStringExtra("ANSWER2", 0);
         String ans3 = intent.getStringExtra("ANSWER3", 0);
         String ans4 = intent.getStringExtra("ANSWER4", 0);
-        String ansnum = intent.getintExtra("ANSNUM", 0);
+        String ansnum = intent.getIntExtra("ANSNUM", 0);
 
         //正解なら正解，不正解なら不正解と表示
 
